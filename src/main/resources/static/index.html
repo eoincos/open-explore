@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<title>Hello AngularJS</title>
+<link href="css/angular-bootstrap.css" rel="stylesheet">
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+</style>
+</head>
+
+<body ng-app="hello">
+  <div class="container">
+    <h1>Open Explore</h1>
+    <div ng-controller="home as home" ng-cloak class="ng-cloak">
+      <label for="departure">Departure</label>
+      <input type="text" ng-model="home.departure" ng-change="home.showDepartureSuggestions(home.departure)" style="width: 100%"/>
+      
+      <label>Departure Suggestions</label>
+      <ul>
+        <div ng-repeat="suggestion in home.departureSuggestions">
+          <li><a href="#" ng-click="home.updateDeparture(suggestion.label)">{{suggestion.label}}</a></li>
+        </div>
+      </ul>
+
+      <label for="arrival">Arrival</label>
+      <input type="text" ng-model="home.arrival" ng-change="home.showArrivalSuggestions(home.arrival)" style="width: 100%"/>
+      
+      <label>Arrival Suggestions</label>
+      <ul>
+        <div ng-repeat="suggestion in home.arrivalSuggestions">
+          <li><a href="#" ng-click="home.updateArrival(suggestion.label)">{{suggestion.label}}</a></li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <script src="js/angular-bootstrap.js" type="text/javascript"></script>
+  <script src="js/hello.js"></script>
+</body>
+</html>
